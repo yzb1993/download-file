@@ -2,9 +2,9 @@
  * @Author: Alias You
  * @Date: 2019-12-31 11:36:49
  * @LastEditors: Alias You
- * @LastEditTime: 2020-03-27 14:44:27
+ * @LastEditTime: 2020-03-27 20:35:32
  * @Description: File description
- * @FilePath: /download/src/assets/browser.js
+ * @FilePath: /download-file/src/assets/browser.js
  */
 // 浏览器信息相关
 
@@ -29,7 +29,7 @@ var browser = {
       mqq: u.match(/mqqbrowser/i), // 移动端QQ浏览器
       chrome: !!(u.indexOf('chrome') && window.chrome), // 谷歌浏览器
       chromeIOS: !!u.match(/CriOS\/[\d]+/i), // ios移动端 chrome
-      safari: u.indexOf('safari') !== -1 && u.indexOf('chrome') === -1, // Safari浏览器
+      safari: u.indexOf('safari') !== -1 && u.indexOf('chrome') === -1 && !u.match(/CriOS\/[\d]+/i), // Safari浏览器
       ie: u.match(/Edge|MSIE|Trident/i), // ie 浏览器
       firefox: u.indexOf('firefox') !== -1, // 火狐浏览器
       weibo: u.match(/WeiBo/i) === 'weibo', // 微博浏览器
