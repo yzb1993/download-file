@@ -1,8 +1,8 @@
 /*
  * @Author: Alias You
  * @Date: 2020-03-11 19:33:17
- * @LastEditors: Alias You
- * @LastEditTime: 2020-03-27 23:14:26
+ * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2020-03-29 23:50:29
  * @Description: 多文件下载功能
  * @FilePath: /download-file/src/assets/download.js
  */
@@ -20,23 +20,28 @@ export function download (url, prefix, tips) {
   if (!reg.test(url)) {
     throw new Error('Incoming parameter is illegal.')
   } else {
-    const type = getFileType(url)
+    var isAndroid = browser.versions.android
     const fileName = getFileName(url, prefix)
-    let xhr = new XMLHttpRequest()
-    xhr.open('get', url, true)
-    axios({
-      method: 'GET',
-      url: url,
-      responseType: 'blob',
-      headers: {
-        'Content-Type': `application/${type}`
-      }
-    })
-      .then((response) => {
-        const data = response.data
-        // 接受二进制文件流
-        downloadExportFile(data, fileName, tips)
+    if (isAndroid) {
+      createDownloadLink(url, fileName)
+    } else {
+      const type = getFileType(url)
+      let xhr = new XMLHttpRequest()
+      xhr.open('get', url, true)
+      axios({
+        method: 'GET',
+        url: url,
+        responseType: 'blob',
+        headers: {
+          'Content-Type': `application/${type}`
+        }
       })
+        .then((response) => {
+          const data = response.data
+          // 接受二进制文件流
+          downloadExportFile(data, fileName, tips)
+        })
+    }
   }
 }
 /**
