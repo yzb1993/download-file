@@ -1,8 +1,8 @@
 /*
  * @Author: Alias You
  * @Date: 2020-03-11 19:33:17
- * @LastEditors: Please set LastEditors
- * @LastEditTime: 2020-03-29 23:50:29
+ * @LastEditors: Alias You
+ * @LastEditTime: 2020-03-30 10:09:54
  * @Description: 多文件下载功能
  * @FilePath: /download-file/src/assets/download.js
  */
@@ -20,7 +20,7 @@ export function download (url, prefix, tips) {
   if (!reg.test(url)) {
     throw new Error('Incoming parameter is illegal.')
   } else {
-    var isAndroid = browser.versions.android
+    const isAndroid = browser.versions.android
     const fileName = getFileName(url, prefix)
     if (isAndroid) {
       createDownloadLink(url, fileName)

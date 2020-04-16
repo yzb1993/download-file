@@ -2,23 +2,26 @@
  * @Author: Alias You
  * @Date: 2020-03-27 10:40:13
  * @LastEditors: Alias You
- * @LastEditTime: 2020-03-27 11:36:46
+ * @LastEditTime: 2020-04-14 20:04:25
  * @Description: File description
- * @FilePath: /download/src/App.vue
+ * @FilePath: /download-file/src/App.vue
  -->
 <template>
   <div id="app">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <ABTest />
   </div>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import ABTest from './components/ABTest.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HelloWorld,
+    ABTest
   }
 }
 </script>
